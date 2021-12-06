@@ -38,9 +38,48 @@
 		$Fecha1=date("Y");
 		$Fecha2=date("Y/m/d");
 		
+		
+		$fechahoraactual = date("Y-m-d H:i:s");
+		$dateTimestamp = strtotime($fechahoraactual);
+		$fh_0_ini = date("Y-m-d")." 00:00:00";
+		$fh_0_fin = date("Y-m-d")." 06:59:59";
+		$fechahora_0_ini = strtotime($fh_0_ini);
+		$fechahora_0_fin = strtotime($fh_0_fin);
+		$fh_1_ini = date("Y-m-d")." 07:00:00";
+		$fh_1_fin = date("Y-m-d")." 11:59:59";
+		$fechahora_1_ini = strtotime($fh_1_ini);
+		$fechahora_1_fin = strtotime($fh_1_fin);
+		$fh_2_ini = date("Y-m-d")." 12:00:00";
+		$fh_2_fin = date("Y-m-d")." 17:59:59";
+		$fechahora_2_ini = strtotime($fh_2_ini);
+		$fechahora_2_fin = strtotime($fh_2_fin);
+		$fh_3_ini = date("Y-m-d")." 18:00:00";
+		$fh_3_fin = date("Y-m-d")." 23:59:59";
+		$fechahora_3_ini = strtotime($fh_3_ini);
+		$fechahora_3_fin = strtotime($fh_3_fin);
+		
+		
+		if (($dateTimestamp >= $fechahora_0_ini) && ($dateTimestamp <= $fechahora_0_fin)){
+			$turno = "MADRUGADA";
+		}
+		elseif (($dateTimestamp >= $fechahora_1_ini) && ($dateTimestamp <= $fechahora_1_fin)){
+			$turno = "MAÑANA";
+		}
+		elseif (($dateTimestamp >= $fechahora_2_ini) && ($dateTimestamp <= $fechahora_2_fin)){
+			$turno = "TARDE";
+		}
+		elseif (($dateTimestamp >= $fechahora_3_ini) && ($dateTimestamp <= $fechahora_3_fin)){
+			$turno = "NOCHE";
+		}
+		else{
+			$turno = "NINGUNO";
+		}
+
+		
+		
 	?>
 	<div class="banner">
-		<h1 class="headline" ><?php echo $titulo; ?></h1>
+		<h1 class="headline" ><?php echo "TENGA USTED BUENA ".$turno." QUERIDO VISITANTE<br/>".$titulo; ?></h1>
 		<span class="tagline"><?php echo $tsecundario; ?></span>
 	
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
